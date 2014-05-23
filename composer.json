@@ -23,5 +23,11 @@
             "url": "https://github.com/abssoft/table"
         }
         
-    ]
+    ],
+    ,
+    "autoload": {
+        "psr-4": {
+            "Table": ""
+        }
+    },
 }
