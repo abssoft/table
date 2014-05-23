@@ -1,0 +1,27 @@
+{
+    "name": "abssoft/table",
+    "description": "Simple HTML Table wrapper",
+    "version": "0.1",
+    "type": "library",
+    "keywords": ["table"],
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Artem Breslavskiy",
+            "email": "artem@breslavskiy.ru",
+            "homepage": "http://artbreslavskiy.ru",
+            "role": "Developer"
+        }
+    ],
+    "require": {
+        "php": ">=5.2"
+    },
+    "repositories": [
+        
+        {
+            "type": "vcs",
+            "url": "https://github.com/abssoft/table"
+        }
+        
+    ]
+}
