@@ -13,7 +13,7 @@ class Table {
 	var $newline="\n";
 	var $emptycell="";
 	var $autocolspan=true;
-    var $nohtml=false;
+    	var $nohtml=false;
 
 	function Table($params = '',$id='',$newline="",$tab=""){
 		$this->newline=$newline;
@@ -55,14 +55,17 @@ class Table {
 		if (!empty($text)){
 			$this->HTMLcontent .= '<caption>'.$text.'</caption>';
 		}
+        return $this;
 	}
 	
 	function Col($content=''){
 		$this->Cols[]=trim($content);
+        return $this;
 	}
 	
 	function Colgroup($content=''){
 		$this->Colgroups[]=trim($content);
+        return $this;
 	}
 	
 	
@@ -85,12 +88,14 @@ class Table {
 		if (is_array($content)) $content=implode($this->newline.$this->tab.$this->tab,$content);
 		$this->TRcontent[$this->TRows]['content'][]=array('id'=>trim($id),'params'=>trim($params),'content'=>trim($content),'colspan'=>$colspan);
 		$this->TRcontent[$this->TRows]['cells']++;
+        return $this;
 	}
 
     function TRAddClass($class){
         if (!$this->insideRow) return trigger_error('Not in TR now');
 
         $this->TRcontent[$this->TRows]['params']=$this->addClass($this->TRcontent[$this->TRows]['params'],$class);
+        return $this;
     }
 
     protected function addClass($htmlString = '', $newClass) {
@@ -116,7 +121,7 @@ class Table {
 	
 	function TRTD($content='',$params='',$id=''){
 		$this->TR();
-		$this->TD($content,$params,$id);
+		return $this->TD($content,$params,$id);
 	}
 	
 	function TH($content='',$params='',$id='',$colspan=0){
@@ -124,6 +129,7 @@ class Table {
 		if (is_array($content)) $content=implode($this->newline.$this->tab.$this->tab,$content);
 		$this->TRcontent[$this->TRows]['content'][]=array('id'=>trim($id),'params'=>trim($params),'content'=>trim($content),'th'=>true,'colspan'=>$colspan);
 		$this->TRcontent[$this->TRows]['cells']++;
+        return $this;
 	}
 	
 	function getHTML(){
@@ -229,6 +235,3 @@ class Table {
    }
 
 }
-
-
-?>
