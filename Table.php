@@ -15,7 +15,7 @@ class Table {
 	var $autocolspan=true;
     	var $nohtml=false;
 
-	function Table($params = '',$id='',$newline="",$tab=""){
+	function __construct($params = '',$id='',$newline="",$tab=""){
 		$this->newline=$newline;
 		$this->tab=$tab;
 		$this->HTMLcontent= '<table';
