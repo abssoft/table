@@ -87,7 +87,7 @@ class Table {
 		if (!$this->insideRow) $this->TR();
 		if (is_array($content)) $content=implode($this->newline.$this->tab.$this->tab,$content);
 		$this->TRcontent[$this->TRows]['content'][]=array('id'=>trim($id),'params'=>trim($params),'content'=>trim($content),'colspan'=>$colspan);
-		$this->TRcontent[$this->TRows]['cells']++;
+		$this->TRcontent[$this->TRows]['cells']+=($colspan>0 ? $colspan : 1);
         return $this;
 	}
 
