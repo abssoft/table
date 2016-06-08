@@ -87,7 +87,7 @@ class Table {
 		if (!$this->insideRow) $this->TR();
 		if (is_array($content)) $content=implode($this->newline.$this->tab.$this->tab,$content);
 		$this->TRcontent[$this->TRows]['content'][]=array('id'=>trim($id),'params'=>trim($params),'content'=>trim($content),'colspan'=>$colspan);
-		$this->TRcontent[$this->TRows]['cells']+=($colspan>0 ? $colspan : 1);
+		$this->TRcontent[$this->TRows]['cells']++;
         return $this;
 	}
 
@@ -173,8 +173,8 @@ class Table {
                     } elseif ($this->autocolspan && $row['cells']<$this->maxCells && ($num+1)==$row['cells']){
 						$this->HTMLcontent.=' colspan="'.($this->maxCells-$num).'"';
 					}
-                    if ($this->nohtml){
-                        $cell['content']=strip_tags($cell['content'],'<A><strong>');
+                    if ($this->nohtml!==false){
+                        $cell['content']=strip_tags($cell['content'],$this->nohtml===true ? '<A><strong>':$this->nohtml);
                     }
 					$this->HTMLcontent.='>'.$cell['content'].(isset($cell['th'])?'</th>':'</td>').$this->newline;
 				}
